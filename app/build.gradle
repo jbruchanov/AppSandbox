@@ -1,5 +1,6 @@
 apply plugin: 'com.android.application'
 apply from: "$rootProject.projectDir/build-android.gradle"
+apply plugin: 'kotlin-kapt'
 
 android {
     defaultConfig {
@@ -14,4 +15,7 @@ dependencies {
     implementation project(":core-android")
     implementation project(":core-network")
     implementation project(":feature1")
+
+    implementation "com.google.dagger:dagger-android:$dagger"
+    kapt "com.google.dagger:dagger-compiler:$dagger"
 }

@@ -3,4 +3,6 @@ apply from: "$rootProject.projectDir/build-java-lib.gradle"
 
 dependencies {
     implementation "androidx.lifecycle:lifecycle-common:$androidLifecycle"
+    api "javax.inject:javax.inject:$javaInject"
+
 }
