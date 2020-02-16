@@ -4,6 +4,10 @@ apply plugin: 'kotlin-android-extensions'
 apply plugin: "androidx.navigation.safeargs"
 apply from: "$rootProject.projectDir/build-versions.gradle"
 
+androidExtensions {
+    features = ["parcelize"]
+}
+
 android {
     compileSdkVersion compileSdk
     buildToolsVersion buildTools
@@ -13,6 +17,12 @@ android {
         targetSdkVersion targetSdk
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildFeatures {
+        viewBinding {
+            enabled = true
+        }
     }
 
     buildTypes {

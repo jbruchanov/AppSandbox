@@ -5,10 +5,10 @@ import android.os.Parcelable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.scurab.android.appsandbox.R
+import com.scurab.android.appsandbox.databinding.MainFragmentBinding
 import kotlinx.android.parcel.Parcelize
 
 class MainFragment : Fragment() {
@@ -29,13 +29,12 @@ class MainFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        sampleArgs?.let { args ->
-            view.findViewById<TextView>(R.id.message).apply {
-                append("\n${args.name}")
+        MainFragmentBinding.bind(view).apply {
+            sampleArgs?.let { args ->
+                message.append("\n${args.name}")
             }
+            button.setOnClickListener { testNavigation() }
         }
-
-        view.findViewById<View>(R.id.button).setOnClickListener { testNavigation() }
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -46,7 +45,12 @@ class MainFragment : Fragment() {
 
     private fun testNavigation() {
         val actionMainFragmentToMainFragment2 =
-            MainFragmentDirections.actionMainFragmentToMainFragment2(SampleArgs("Arguments passed", 1))
+            MainFragmentDirections.actionMainFragmentToMainFragment2(
+                SampleArgs(
+                    "Arguments passed",
+                    1
+                )
+            )
         findNavController().navigate(actionMainFragmentToMainFragment2)
     }
 }
