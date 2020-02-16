@@ -9,6 +9,8 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.scurab.android.appsandbox.R
 import com.scurab.android.appsandbox.databinding.MainFragmentBinding
+import com.scurab.appsandbox.core.android.lifecycle.lifecycleLazy
+import com.scurab.appsandbox.core.ref
 import kotlinx.android.parcel.Parcelize
 
 class MainFragment : Fragment() {
@@ -20,6 +22,8 @@ class MainFragment : Fragment() {
         }
     }
 
+    private val viewBinding by lifecycleLazy { MainFragmentBinding.bind(view.ref) }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -29,7 +33,7 @@ class MainFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        MainFragmentBinding.bind(view).apply {
+        viewBinding.apply {
             sampleArgs?.let { args ->
                 message.append("\n${args.name}")
             }
