@@ -1,6 +1,7 @@
 //apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: "androidx.navigation.safeargs"
 apply from: "$rootProject.projectDir/build-versions.gradle"
 
 android {
@@ -39,6 +40,12 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$androidLifecycle"
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$androidLifecycle"
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:$androidLifecycle"
+
+    //region navigation
+    implementation "androidx.navigation:navigation-fragment-ktx:$androidNavigation"
+    implementation "androidx.navigation:navigation-ui-ktx:$androidNavigation"
+    androidTestImplementation "androidx.navigation:navigation-testing:$androidNavigation"
+    //endregion
 
     testImplementation "junit:junit:$junit"
     androidTestImplementation "androidx.test.ext:junit:$androidJunit"

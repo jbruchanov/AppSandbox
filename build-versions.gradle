@@ -15,4 +15,5 @@ ext {
     junit = "4.12"
     androidJunit = "1.1.1"
     androidEspresso = "3.2.0"
+    androidNavigation = android_navigation_version
 }
