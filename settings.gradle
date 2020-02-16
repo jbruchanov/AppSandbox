@@ -1,0 +1,6 @@
+include ':core'
+include ':core-network'
+include ':core-android'
+include ':feature1'
+include ':app'
+rootProject.name = "AppSandbox"

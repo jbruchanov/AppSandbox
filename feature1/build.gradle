@@ -1,0 +1,8 @@
+apply plugin: 'com.android.library'
+apply from: "$rootProject.projectDir/build-android.gradle"
+
+
+dependencies {
+    implementation project(":core-android")
+    implementation project(":core-network")
+}

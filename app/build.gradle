@@ -1,0 +1,17 @@
+apply plugin: 'com.android.application'
+apply from: "$rootProject.projectDir/build-android.gradle"
+
+android {
+    defaultConfig {
+        applicationId "com.scurab.android.appsandbox"
+
+        versionCode 1
+        versionName "1.0"
+    }
+}
+
+dependencies {
+    implementation project(":core-android")
+    implementation project(":core-network")
+    implementation project(":feature1")
+}
