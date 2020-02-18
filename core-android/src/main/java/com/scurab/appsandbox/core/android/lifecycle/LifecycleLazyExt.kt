@@ -6,7 +6,7 @@ import androidx.fragment.app.Fragment
 /**
  * Lazy tied to view's lifecycle
  */
-fun <T> Fragment.lifecycleLazy(initializer: () -> T) =
+fun <T> Fragment.viewBinding(initializer: () -> T) =
     com.scurab.appsandbox.core.lifecycleLazy({ viewLifecycleOwner.lifecycle }, initializer)
 
 
@@ -19,5 +19,5 @@ fun <T> Fragment.lifecycleFragmentLazy(initializer: () -> T) =
 /**
  * Lazy tied to activities's lifecycle
  */
-fun <T> ComponentActivity.lifecycleLazy(initializer: () -> T) =
+fun <T> ComponentActivity.viewBinding(initializer: () -> T) =
     com.scurab.appsandbox.core.lifecycleLazy({ lifecycle }, initializer)

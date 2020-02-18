@@ -6,8 +6,8 @@ import androidx.lifecycle.OnLifecycleEvent
 
 private object UNINITIALIZED_VALUE
 
-fun <T> lifecycleLazy(lifecycle: () -> Lifecycle, initializer: () -> T) = LifecycleLazy(
-    lifecycle,
+fun <T> lifecycleLazy(lifecycleProvider: () -> Lifecycle, initializer: () -> T) = LifecycleLazy(
+    lifecycleProvider,
     initializer
 )
 
