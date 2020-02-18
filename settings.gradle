@@ -1,3 +1,4 @@
+include ':core-model'
 include ':core'
 include ':core-network'
 include ':core-android'

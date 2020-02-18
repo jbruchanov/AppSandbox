@@ -19,7 +19,8 @@ import dagger.Provides
 @Component(
     modules = [
         AppModule::class,
-        AppViewModelBinding::class
+        AppViewModelBinding::class,
+        NetworkModule::class
     ]
 )
 interface AppComponent : DIComponent,

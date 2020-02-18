@@ -9,7 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.scurab.android.appsandbox.R
 import com.scurab.android.appsandbox.databinding.MainFragmentBinding
-import com.scurab.appsandbox.core.android.lifecycle.lifecycleLazy
+import com.scurab.appsandbox.core.android.lifecycle.viewBinding
 import com.scurab.appsandbox.core.ref
 import kotlinx.android.parcel.Parcelize
 
@@ -22,7 +22,7 @@ class MainFragment : Fragment() {
         }
     }
 
-    private val viewBinding by lifecycleLazy { MainFragmentBinding.bind(view.ref) }
+    private val viewBinding by viewBinding { MainFragmentBinding.bind(view.ref) }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -37,7 +37,7 @@ class MainFragment : Fragment() {
             sampleArgs?.let { args ->
                 message.append("\n${args.name}")
             }
-            button.setOnClickListener { testNavigation() }
+            button.setOnClickListener { navigateToFeature1() }
         }
     }
 
@@ -56,6 +56,10 @@ class MainFragment : Fragment() {
                 )
             )
         findNavController().navigate(actionMainFragmentToMainFragment2)
+    }
+
+    private fun navigateToFeature1() {
+        findNavController().navigate(R.id.feature1)
     }
 }
 

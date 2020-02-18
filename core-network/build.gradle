@@ -2,4 +2,10 @@ apply from: "$rootProject.projectDir/build-java-lib.gradle"
 
 dependencies {
     implementation project(":core")
+    implementation project(":core-model")
+    api "com.squareup.retrofit2:retrofit:$retrofit"
+    api "com.squareup.retrofit2:converter-gson:$retrofit"
+    api "com.squareup.okhttp3:okhttp:$okhttp"
+    api "com.squareup.okhttp3:logging-interceptor:$okhttp"
+    api "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutines"
 }
