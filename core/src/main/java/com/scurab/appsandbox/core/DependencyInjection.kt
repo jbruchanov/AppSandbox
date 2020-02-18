@@ -14,9 +14,9 @@ annotation class SessionScope
 @kotlin.annotation.Retention(AnnotationRetention.RUNTIME)
 annotation class BaseActivityScope
 
-
-interface DIComponentProvider<T : DIComponent> {
-    val component: T
+interface HasAppComponent {
+    val appComponent: DIComponent
 }
 
+interface DIComponentProvider<T : DIComponent>
 interface DIComponent

@@ -16,6 +16,6 @@ dependencies {
     implementation project(":core-network")
     implementation project(":feature1")
 
-    implementation "com.google.dagger:dagger-android:$dagger"
+    implementation "com.google.dagger:dagger:$dagger"
     kapt "com.google.dagger:dagger-compiler:$dagger"
 }
