@@ -1,6 +1,8 @@
 package com.scurab.appsandbox.core.android.di
 
 import androidx.lifecycle.ViewModel
+import com.scurab.appsandbox.core.android.BaseActivity
+import com.scurab.appsandbox.core.di.DIComponent
 import dagger.MapKey
 import kotlin.reflect.KClass
 
@@ -13,3 +15,11 @@ import kotlin.reflect.KClass
 //dagger
 @MapKey
 annotation class ViewModelKey(val value: KClass<out ViewModel>)
+
+interface IBaseActivityComponent {
+    fun inject(baseActivity: BaseActivity)
+}
+
+interface HasBaseActivityComponent {
+    fun activityComponent(activity: BaseActivity): IBaseActivityComponent
+}

@@ -1,5 +1,6 @@
 package com.scurab.appsandbox.core.android
 
+import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import com.scurab.appsandbox.core.android.coroutine.CoroutineScopeAction
 import com.scurab.appsandbox.core.android.coroutine.IProgressBarObservableAction
@@ -10,10 +11,16 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.isActive
 import kotlinx.coroutines.launch
 
-open class BaseViewModel : ViewModel(),
+interface ISavingState {
+    var savedStateHandle: SavedStateHandle
+}
+
+open class BaseViewModel : ViewModel(), ISavingState,
     IInjectableLogger by IInjectableLogger.Impl(),
     IViewModelInjectableDispatchers by IViewModelInjectableDispatchers.Impl(),
     IProgressBarObservableAction by IProgressBarObservableAction.Impl() {
+
+    override lateinit var savedStateHandle: SavedStateHandle
 
     protected fun CoroutineScope.launchWithActions(
         vararg actions: CoroutineScopeAction,

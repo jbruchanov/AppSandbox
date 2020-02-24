@@ -1,12 +1,12 @@
 package com.scurab.android.appsandbox
 
 import android.app.Application
-import com.scurab.android.appsandbox.di.AppComponent
-import com.scurab.android.appsandbox.di.AppModule
-import com.scurab.android.appsandbox.di.DaggerAppComponent
+import com.scurab.android.appsandbox.di.*
+import com.scurab.appsandbox.core.android.BaseActivity
+import com.scurab.appsandbox.core.android.di.HasBaseActivityComponent
 import com.scurab.appsandbox.core.di.HasAppComponent
 
-class App : Application(), HasAppComponent {
+class App : Application(), HasAppComponent, HasBaseActivityComponent {
 
     override fun onCreate() {
         super.onCreate()
@@ -24,4 +24,16 @@ class App : Application(), HasAppComponent {
                     _appComponent = it
                 }
         }
+
+    private var _sessionComponent: SessionComponent? = null
+    val sessionComponent: SessionComponent
+        get() {
+            return _sessionComponent ?: appComponent.sessionComponent().also {
+                _sessionComponent = it
+            }
+        }
+
+    override fun activityComponent(activity: BaseActivity): BaseActivityComponent {
+        return appComponent.sessionComponent().activityComponent(ActivityModule(activity))
+    }
 }

@@ -2,9 +2,10 @@ package com.scurab.appsandbox.core.android.util
 
 import android.content.Context
 import androidx.fragment.app.Fragment
+import com.scurab.appsandbox.core.android.BaseActivity
+import com.scurab.appsandbox.core.android.di.HasBaseActivityComponent
 import com.scurab.appsandbox.core.di.DIComponent
 import com.scurab.appsandbox.core.di.DIComponentProvider
-import com.scurab.appsandbox.core.di.HasAppComponent
 
 object AndroidInjector {
 
@@ -13,10 +14,10 @@ object AndroidInjector {
         context: Context,
         klass: Class<T>
     ): T {
-        val appComponent = (context.applicationContext as? HasAppComponent)
-            ?.appComponent
-
-        return appComponent as T
+        val baseActivity = context.requireActivity(BaseActivity::class.java)
+        //TODO: providers for other scopes ignored
+        return baseActivity.activityComponent as? T
+            ?: throw IllegalStateException("Invalid dagger setup")
     }
 
     fun <T : DIComponentProvider<U>, U : DIComponent> Fragment.provider(klass: Class<T>) =

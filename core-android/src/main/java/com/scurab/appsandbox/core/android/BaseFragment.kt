@@ -2,16 +2,14 @@ package com.scurab.appsandbox.core.android
 
 import android.content.Context
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
+import com.scurab.appsandbox.core.android.di.IInjectableSavedStateViewModelFactoryProvider
 import com.scurab.appsandbox.core.di.IInjectableLogger
-import javax.inject.Inject
 
 abstract class BaseFragment : Fragment(),
-    IInjectableLogger by IInjectableLogger.Impl() {
+    IInjectableLogger by IInjectableLogger.Impl(),
+    IInjectableSavedStateViewModelFactoryProvider by IInjectableSavedStateViewModelFactoryProvider.Impl() {
 
     protected open val viewModel: BaseViewModel? = null
-
-    @Inject lateinit var viewModelFactory: ViewModelProvider.Factory
 
     override fun onResume() {
         super.onResume()

@@ -7,6 +7,7 @@ import com.scurab.android.appsandbox.MainActivity
 import com.scurab.android.feature1.di.Feature1ComponentProvider
 import com.scurab.appsandbox.core.Logger
 import com.scurab.appsandbox.core.android.coroutine.AndroidDispatchers
+import com.scurab.appsandbox.core.android.di.SavedStateViewModelFactoryProvider
 import com.scurab.appsandbox.core.android.util.AndroidLogger
 import com.scurab.appsandbox.core.couroutines.IDispatchers
 import com.scurab.appsandbox.core.di.AppScope
@@ -24,11 +25,9 @@ import dagger.Provides
         NetworkModule::class
     ]
 )
-interface AppComponent : DIComponent,
-    Feature1ComponentProvider {
+interface AppComponent : DIComponent {
 
     fun inject(app: App)
-    fun inject(app: MainActivity)
 
     @Component.Builder
     interface Builder {
@@ -40,6 +39,8 @@ interface AppComponent : DIComponent,
         @BindsInstance
         fun app(app: App): Builder
     }
+
+    fun sessionComponent() : SessionComponent
 }
 
 @Module
@@ -51,12 +52,6 @@ class AppModule(private val app: App) {
     @Provides
     @AppScope
     fun provideLogger(): Logger = AndroidLogger()
-
-    @Provides
-    @AppScope
-    fun provideViewModelFactory(factory: DaggerViewModelFactory): ViewModelProvider.Factory {
-        return factory
-    }
 
     @Provides
     @AppScope

@@ -18,7 +18,7 @@ fun Context.requireActivity(): AppCompatActivity {
 fun <T : Activity> Context.requireActivity(klass: Class<out T>): T {
     var thiz: Context? = this
     while (thiz != null) {
-        if (thiz::class.java == klass) {
+        if (klass.isInstance(this)) {
             return this as T
         } else {
             thiz = (this as? ContextWrapper)?.baseContext
