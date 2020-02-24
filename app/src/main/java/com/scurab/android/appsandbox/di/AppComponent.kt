@@ -5,11 +5,12 @@ import androidx.lifecycle.ViewModelProvider
 import com.scurab.android.appsandbox.App
 import com.scurab.android.appsandbox.MainActivity
 import com.scurab.android.feature1.di.Feature1ComponentProvider
-import com.scurab.appsandbox.core.AppScope
-import com.scurab.appsandbox.core.DIComponent
-import com.scurab.appsandbox.core.DIComponentProvider
 import com.scurab.appsandbox.core.Logger
+import com.scurab.appsandbox.core.android.coroutine.AndroidDispatchers
 import com.scurab.appsandbox.core.android.util.AndroidLogger
+import com.scurab.appsandbox.core.couroutines.IDispatchers
+import com.scurab.appsandbox.core.di.AppScope
+import com.scurab.appsandbox.core.di.DIComponent
 import dagger.BindsInstance
 import dagger.Component
 import dagger.Module
@@ -56,5 +57,9 @@ class AppModule(private val app: App) {
     fun provideViewModelFactory(factory: DaggerViewModelFactory): ViewModelProvider.Factory {
         return factory
     }
+
+    @Provides
+    @AppScope
+    fun provideDispatchers(): IDispatchers = AndroidDispatchers()
 }
 

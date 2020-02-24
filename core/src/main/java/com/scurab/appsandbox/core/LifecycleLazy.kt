@@ -18,9 +18,8 @@ fun <T> lifecycleLazy(lifecycleProvider: () -> Lifecycle, initializer: () -> T) 
  * class instantiation time (e.g. fragment's view lifecycle provider)
  * @param initializer
  */
-class LifecycleLazy<out T>(private val lifecycleProvider: () -> Lifecycle, initializer: () -> T) :
-    Lazy<T> {
-    private var initializer: (() -> T)? = initializer
+class LifecycleLazy<out T>(private val lifecycleProvider: () -> Lifecycle,
+                           private val initializer: () -> T) : Lazy<T> {
     private var _value: Any? = UNINITIALIZED_VALUE
     private val lifecycleObserver = object : LifecycleObserver {
         @OnLifecycleEvent(Lifecycle.Event.ON_DESTROY)
@@ -33,8 +32,7 @@ class LifecycleLazy<out T>(private val lifecycleProvider: () -> Lifecycle, initi
         get() {
             if (_value === UNINITIALIZED_VALUE) {
                 lifecycleProvider().addObserver(lifecycleObserver)
-                _value = initializer!!()
-                initializer = null
+                _value = initializer()
             }
             @Suppress("UNCHECKED_CAST")
             return _value as T

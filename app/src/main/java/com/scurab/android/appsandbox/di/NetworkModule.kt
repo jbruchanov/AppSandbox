@@ -2,7 +2,7 @@ package com.scurab.android.appsandbox.di
 
 import com.google.gson.Gson
 import com.scurab.android.network.RetrofitWebApi
-import com.scurab.appsandbox.core.AppScope
+import com.scurab.appsandbox.core.di.AppScope
 import dagger.Module
 import dagger.Provides
 import okhttp3.OkHttpClient

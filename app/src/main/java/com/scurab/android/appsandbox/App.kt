@@ -4,7 +4,7 @@ import android.app.Application
 import com.scurab.android.appsandbox.di.AppComponent
 import com.scurab.android.appsandbox.di.AppModule
 import com.scurab.android.appsandbox.di.DaggerAppComponent
-import com.scurab.appsandbox.core.HasAppComponent
+import com.scurab.appsandbox.core.di.HasAppComponent
 
 class App : Application(), HasAppComponent {
 

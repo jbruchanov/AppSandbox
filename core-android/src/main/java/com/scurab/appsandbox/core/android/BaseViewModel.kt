@@ -1,18 +1,37 @@
 package com.scurab.appsandbox.core.android
 
 import androidx.lifecycle.ViewModel
-import com.scurab.appsandbox.core.Logger
-import com.scurab.appsandbox.core.ref
-import javax.inject.Inject
+import com.scurab.appsandbox.core.android.coroutine.CoroutineScopeAction
+import com.scurab.appsandbox.core.android.coroutine.IProgressBarObservableAction
+import com.scurab.appsandbox.core.android.di.IViewModelInjectableDispatchers
+import com.scurab.appsandbox.core.collection.forEachReversed
+import com.scurab.appsandbox.core.di.IInjectableLogger
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.isActive
+import kotlinx.coroutines.launch
 
-open class BaseViewModel : ViewModel() {
+open class BaseViewModel : ViewModel(),
+    IInjectableLogger by IInjectableLogger.Impl(),
+    IViewModelInjectableDispatchers by IViewModelInjectableDispatchers.Impl(),
+    IProgressBarObservableAction by IProgressBarObservableAction.Impl() {
 
-    private var _logger: Logger? = null
-    val logger: Logger get() = _logger.ref
+    protected fun CoroutineScope.launchWithActions(
+        vararg actions: CoroutineScopeAction,
+        block: suspend CoroutineScope.() -> Unit
+    ) {
+        actions.forEach { it.preExec() }
+        launch {
+            try {
+                block()
+            } finally {
+                actions.forEachReversed { it.postExec(!this.isActive) }
+            }
+        }
+    }
 
-    @Inject
-    fun setLogger(logger: Logger) {
-        check(_logger == null)
-        this._logger = logger
+    override fun onCleared() {
+        progressBarVisibleAction.clear()
+        dispatchers.resumedHandler.clearQueue()
+        super.onCleared()
     }
 }

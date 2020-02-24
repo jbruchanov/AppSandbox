@@ -3,5 +3,6 @@ apply from: "$rootProject.projectDir/build-android.gradle"
 
 dependencies {
     api project(":core")
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$androidLifecycle"
     implementation "com.google.dagger:dagger:$dagger"
 }

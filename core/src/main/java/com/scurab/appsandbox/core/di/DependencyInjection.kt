@@ -1,4 +1,4 @@
-package com.scurab.appsandbox.core
+package com.scurab.appsandbox.core.di
 
 import javax.inject.Scope
 
@@ -20,3 +20,8 @@ interface HasAppComponent {
 
 interface DIComponentProvider<T : DIComponent>
 interface DIComponent
+
+class NotInjectedException(msg: String) : IllegalStateException(msg)
+
+fun throwNotInjected(name: String): Nothing =
+    throw NotInjectedException("$name not injected, use DI or call set($name) manually")

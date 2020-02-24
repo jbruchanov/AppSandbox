@@ -2,25 +2,25 @@ package com.scurab.appsandbox.core.android
 
 import android.content.Context
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.scurab.appsandbox.core.Logger
+import com.scurab.appsandbox.core.di.IInjectableLogger
 import javax.inject.Inject
 
-abstract class BaseFragment : Fragment() {
+abstract class BaseFragment : Fragment(),
+    IInjectableLogger by IInjectableLogger.Impl() {
+
+    protected open val viewModel: BaseViewModel? = null
 
     @Inject lateinit var viewModelFactory: ViewModelProvider.Factory
-    @Inject lateinit var logger: Logger
 
-    private val viewModelProvider by lazy(mode = LazyThreadSafetyMode.NONE) {
-        ViewModelProvider(
-            viewModelStore,
-            viewModelFactory
-        )
+    override fun onResume() {
+        super.onResume()
+        viewModel?.setResumed(true)
     }
 
-    protected fun <T : ViewModel> viewModel(klass: Class<T>): T {
-        return viewModelProvider.get(klass)
+    override fun onPause() {
+        viewModel?.setResumed(false)
+        super.onPause()
     }
 
     override fun onAttach(context: Context) {

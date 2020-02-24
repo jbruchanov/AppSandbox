@@ -2,7 +2,7 @@ package com.scurab.android.appsandbox.di
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.scurab.appsandbox.core.AppScope
+import com.scurab.appsandbox.core.di.AppScope
 import com.scurab.appsandbox.core.npe
 import javax.inject.Inject
 import javax.inject.Provider

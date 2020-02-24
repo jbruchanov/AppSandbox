@@ -48,7 +48,6 @@ dependencies {
     implementation "androidx.appcompat:appcompat:$androidAppCompat"
     implementation "androidx.lifecycle:lifecycle-extensions:$androidLifecycle"
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$androidLifecycle"
-    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$androidLifecycle"
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:$androidLifecycle"
 
     //region navigation
