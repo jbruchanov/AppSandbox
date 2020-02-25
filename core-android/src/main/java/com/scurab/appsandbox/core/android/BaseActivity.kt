@@ -6,9 +6,11 @@ import androidx.lifecycle.ViewModelProvider
 import com.scurab.appsandbox.core.android.di.HasBaseActivityComponent
 import com.scurab.appsandbox.core.android.di.IInjectableSavedStateViewModelFactoryProvider
 import com.scurab.appsandbox.core.android.di.SavedStateViewModelFactoryProvider
+import com.scurab.appsandbox.core.di.IInjectableLogger
 import javax.inject.Inject
 
 abstract class BaseActivity : AppCompatActivity(),
+    IInjectableLogger by IInjectableLogger.Impl(),
     IInjectableSavedStateViewModelFactoryProvider by IInjectableSavedStateViewModelFactoryProvider.Impl() {
 
     open val activityComponent by lazy {
