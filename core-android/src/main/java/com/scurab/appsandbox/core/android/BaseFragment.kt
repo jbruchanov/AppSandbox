@@ -11,16 +11,6 @@ abstract class BaseFragment : Fragment(),
 
     protected open val viewModel: BaseViewModel? = null
 
-    override fun onResume() {
-        super.onResume()
-        viewModel?.setResumed(true)
-    }
-
-    override fun onPause() {
-        viewModel?.setResumed(false)
-        super.onPause()
-    }
-
     override fun onAttach(context: Context) {
         super.onAttach(context)
         inject()

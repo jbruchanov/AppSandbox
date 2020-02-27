@@ -1,13 +1,17 @@
 package com.scurab.appsandbox.core.android.di
 
+import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.AbstractSavedStateViewModelFactory
 import androidx.savedstate.SavedStateRegistryOwner
+import com.scurab.appsandbox.core.android.lifecycle.SavedStateViewModelFactoryProvider
 import com.scurab.appsandbox.core.di.InjectableField
 import javax.inject.Inject
 
 interface IInjectableSavedStateViewModelFactoryProvider {
 
-    val SavedStateRegistryOwner.viewModelFactory: AbstractSavedStateViewModelFactory
+    val Fragment.viewModelFactory: AbstractSavedStateViewModelFactory
+    val AppCompatActivity.viewModelFactory: AbstractSavedStateViewModelFactory
 
     @Inject
     fun set(value: SavedStateViewModelFactoryProvider)
@@ -18,7 +22,14 @@ interface IInjectableSavedStateViewModelFactoryProvider {
 
         private var _viewModelFactory: AbstractSavedStateViewModelFactory? = null
 
-        override val SavedStateRegistryOwner.viewModelFactory
-            get() = _viewModelFactory ?: value.createFactory(this).also { _viewModelFactory = it }
+        override val Fragment.viewModelFactory
+            get() = _viewModelFactory ?: value.createFactory(this, this).also {
+                _viewModelFactory = it
+            }
+
+        override val AppCompatActivity.viewModelFactory
+            get() = _viewModelFactory ?: value.createFactory(this, this).also {
+                _viewModelFactory = it
+            }
     }
 }

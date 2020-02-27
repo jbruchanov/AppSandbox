@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModel
 import com.scurab.appsandbox.core.android.coroutine.CoroutineScopeAction
 import com.scurab.appsandbox.core.android.coroutine.IProgressBarObservableAction
 import com.scurab.appsandbox.core.android.di.IViewModelInjectableDispatchers
+import com.scurab.appsandbox.core.android.util.ITaggable
 import com.scurab.appsandbox.core.collection.forEachReversed
 import com.scurab.appsandbox.core.di.IInjectableLogger
 import kotlinx.coroutines.CoroutineScope
@@ -17,6 +18,7 @@ interface ISavingState {
 
 open class BaseViewModel : ViewModel(), ISavingState,
     IInjectableLogger by IInjectableLogger.Impl(),
+    ITaggable by ITaggable.Impl(),
     IViewModelInjectableDispatchers by IViewModelInjectableDispatchers.Impl(),
     IProgressBarObservableAction by IProgressBarObservableAction.Impl() {
 
