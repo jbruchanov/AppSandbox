@@ -1,13 +1,9 @@
 package com.scurab.android.appsandbox.di
 
 import android.app.Application
-import androidx.lifecycle.ViewModelProvider
 import com.scurab.android.appsandbox.App
-import com.scurab.android.appsandbox.MainActivity
-import com.scurab.android.feature1.di.Feature1ComponentProvider
 import com.scurab.appsandbox.core.Logger
 import com.scurab.appsandbox.core.android.coroutine.AndroidDispatchers
-import com.scurab.appsandbox.core.android.di.SavedStateViewModelFactoryProvider
 import com.scurab.appsandbox.core.android.util.AndroidLogger
 import com.scurab.appsandbox.core.couroutines.IDispatchers
 import com.scurab.appsandbox.core.di.AppScope
