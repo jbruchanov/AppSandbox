@@ -1,4 +1,4 @@
-package com.scurab.appsandbox.core.android.lifecycle
+package com.scurab.appsandbox.core.android.ext
 
 import androidx.activity.ComponentActivity
 import androidx.fragment.app.Fragment

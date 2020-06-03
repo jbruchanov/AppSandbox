@@ -1,4 +1,4 @@
-package com.scurab.appsandbox.core.collection
+package com.scurab.appsandbox.core.ext
 
 /**
  * Iterate an array in reversed order

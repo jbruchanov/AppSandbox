@@ -1,5 +1,6 @@
 package com.scurab.appsandbox.core
 
+import com.scurab.appsandbox.core.ext.stackTrace
 import java.text.SimpleDateFormat
 import java.util.*
 

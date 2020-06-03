@@ -9,8 +9,8 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.scurab.android.appsandbox.R
 import com.scurab.android.appsandbox.databinding.MainFragmentBinding
-import com.scurab.appsandbox.core.android.lifecycle.viewBinding
-import com.scurab.appsandbox.core.ref
+import com.scurab.appsandbox.core.android.ext.viewBinding
+import com.scurab.appsandbox.core.ext.ref
 import kotlinx.android.parcel.Parcelize
 
 class MainFragment : Fragment() {

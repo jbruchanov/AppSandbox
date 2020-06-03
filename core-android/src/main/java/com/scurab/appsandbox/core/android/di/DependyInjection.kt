@@ -2,7 +2,6 @@ package com.scurab.appsandbox.core.android.di
 
 import androidx.lifecycle.ViewModel
 import com.scurab.appsandbox.core.android.BaseActivity
-import com.scurab.appsandbox.core.di.DIComponent
 import dagger.MapKey
 import kotlin.reflect.KClass
 

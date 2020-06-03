@@ -3,7 +3,7 @@ package com.scurab.appsandbox.core.android.util
 import android.content.Context
 import androidx.fragment.app.Fragment
 import com.scurab.appsandbox.core.android.BaseActivity
-import com.scurab.appsandbox.core.android.di.HasBaseActivityComponent
+import com.scurab.appsandbox.core.android.ext.requireActivity
 import com.scurab.appsandbox.core.di.DIComponent
 import com.scurab.appsandbox.core.di.DIComponentProvider
 

@@ -3,13 +3,11 @@ package com.scurab.android.appsandbox
 import android.os.Bundle
 import android.view.View
 import androidx.activity.viewModels
-import androidx.lifecycle.SavedStateViewModelFactory
 import com.scurab.android.appsandbox.databinding.MainActivityBinding
 import com.scurab.appsandbox.core.android.BaseActivity
 import com.scurab.appsandbox.core.android.BaseViewModel
-import com.scurab.appsandbox.core.android.di.HasBaseActivityComponent
 import com.scurab.appsandbox.core.android.view.HasProgressBar
-import com.scurab.appsandbox.core.android.lifecycle.viewBinding
+import com.scurab.appsandbox.core.android.ext.viewBinding
 import javax.inject.Inject
 
 class MainActivity : BaseActivity(), HasProgressBar {

@@ -1,4 +1,4 @@
-package com.scurab.appsandbox.core.android.util
+package com.scurab.appsandbox.core.android.ext
 
 import android.app.Activity
 import android.content.Context

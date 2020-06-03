@@ -1,9 +1,19 @@
 package com.scurab.appsandbox.core.android.view
 
 import android.view.View
-import androidx.lifecycle.*
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.LifecycleObserver
+import androidx.lifecycle.LifecycleOwner
+import androidx.lifecycle.Observer
+import androidx.lifecycle.OnLifecycleEvent
 import com.scurab.appsandbox.core.android.BaseViewModel
 import java.util.concurrent.atomic.AtomicInteger
+import kotlin.collections.MutableMap
+import kotlin.collections.component1
+import kotlin.collections.component2
+import kotlin.collections.forEach
+import kotlin.collections.mutableMapOf
+import kotlin.collections.set
 
 /**
  * Implementation of multibinding of
