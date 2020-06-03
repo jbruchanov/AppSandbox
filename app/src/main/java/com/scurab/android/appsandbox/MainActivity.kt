@@ -23,7 +23,7 @@ class MainActivity : BaseActivity(), HasProgressBar {
     }
 
     override fun inject() {
-        activityComponent.inject(this)
+        sessionComponent.inject(this)
     }
 }
 

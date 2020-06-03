@@ -15,10 +15,10 @@ import kotlin.reflect.KClass
 @MapKey
 annotation class ViewModelKey(val value: KClass<out ViewModel>)
 
-interface IBaseActivityComponent {
+interface IBaseSessionComponent {
     fun inject(baseActivity: BaseActivity)
 }
 
-interface HasBaseActivityComponent {
-    fun activityComponent(activity: BaseActivity): IBaseActivityComponent
+interface HasBaseSessionComponent {
+    val sessionComponent: IBaseSessionComponent
 }

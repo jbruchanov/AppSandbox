@@ -10,10 +10,6 @@ annotation class AppScope
 @kotlin.annotation.Retention(AnnotationRetention.RUNTIME)
 annotation class SessionScope
 
-@Scope
-@kotlin.annotation.Retention(AnnotationRetention.RUNTIME)
-annotation class BaseActivityScope
-
 interface HasAppComponent {
     val appComponent: DIComponent
 }

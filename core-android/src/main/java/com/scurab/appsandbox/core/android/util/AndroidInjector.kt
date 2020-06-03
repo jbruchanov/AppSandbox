@@ -16,7 +16,7 @@ object AndroidInjector {
     ): T {
         val baseActivity = context.requireActivity(BaseActivity::class.java)
         //TODO: providers for other scopes ignored
-        return baseActivity.activityComponent as? T
+        return baseActivity.sessionComponent as? T
             ?: throw IllegalStateException("Invalid dagger setup")
     }
 
