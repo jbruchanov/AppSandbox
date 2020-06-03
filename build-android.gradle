@@ -2,14 +2,13 @@
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: "androidx.navigation.safeargs"
-apply from: "$rootProject.projectDir/build-versions.gradle"
 
 androidExtensions {
     features = ["parcelize"]
 }
 
 android {
-    compileSdkVersion compileSdk
+    compileSdkVersion compileSdk.toInteger()
     buildToolsVersion buildTools
 
     defaultConfig {
