@@ -3,15 +3,15 @@ package com.scurab.android.feature1.di
 import androidx.lifecycle.ViewModel
 import com.scurab.android.feature1.ListFragment
 import com.scurab.android.feature1.ListFragmentViewModel
-import com.scurab.appsandbox.core.DIComponent
-import com.scurab.appsandbox.core.DIComponentProvider
-import com.scurab.appsandbox.core.android.util.ViewModelKey
+import com.scurab.appsandbox.core.di.DIComponent
+import com.scurab.appsandbox.core.di.DIComponentProvider
+import com.scurab.appsandbox.core.android.di.ViewModelKey
 import dagger.Binds
-import dagger.Module
 import dagger.Subcomponent
 import dagger.multibindings.IntoMap
 
-interface Feature1ComponentProvider : DIComponentProvider<Feature1Component> {
+interface Feature1ComponentProvider :
+    DIComponentProvider<Feature1Component> {
     val feature1Component: Feature1Component
 }
 
