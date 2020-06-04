@@ -5,4 +5,8 @@ dependencies {
     api project(":core")
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$androidLifecycle"
     implementation "com.google.dagger:dagger:$dagger"
+
+    testImplementation "org.robolectric:robolectric:$robolectric"
+    testImplementation "android.arch.core:core-testing:$androidArchCore"
+    testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:$coroutines"
 }
